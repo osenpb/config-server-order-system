@@ -11,18 +11,5 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
   
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:7080/realms/order-system
 
-eureka:
-  client:
-    enabled: true        # Asegúrate de que no esté en false
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
