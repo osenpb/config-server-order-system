@@ -4,21 +4,23 @@ server:
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       default-filters:
         - TokenRelay
-      routes: 
-        - id: msvc-product
-          uri: lb://msvc-product
-          predicates:
-            - Path=/api/products/**
-        - id: msvc-order
-          uri: lb://msvc-order
-          predicates:
-            - Path=/api/orders/**
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes: 
+            - id: msvc-product
+              uri: lb://msvc-product
+              predicates:
+                - Path=/api/products/**
+            - id: msvc-order
+              uri: lb://msvc-order
+              predicates:
+                - Path=/api/orders/**
   
   output:
     ansi:
@@ -33,7 +35,7 @@ spring:
             client-secret: zUcCDu9kNswZAUMaCuaPIS3J2PPkaQOE
             scope: openid, profile, email, roles
             authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak" # Pro-tip: usa {baseUrl} para que funcione en cualquier servidor
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak" # {baseUrl} para que funcione en cualquier servidor
         provider:
           keycloak:
             issuer-uri: http://localhost:7080/realms/order-system
