@@ -4,7 +4,7 @@ server:
 spring:
   cloud:
     gateway:
-      
+      discovery:
       server:
         webflux:
           default-filters:
@@ -23,10 +23,6 @@ spring:
               predicates:
                 - Path=/api/orders/**
   
-  output:
-    ansi:
-      enabled: ALWAYS
-    
   security:
     oauth2:
       client:
@@ -41,6 +37,12 @@ spring:
           keycloak:
             issuer-uri: http://localhost:7080/realms/order-system
 
+
+  output:
+    ansi:
+      enabled: ALWAYS
+    
+  
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
