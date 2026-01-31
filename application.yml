@@ -27,16 +27,33 @@ resilience4j:
     instances:
       productCB:
         baseConfig: default
+  
+logging:
+  level:
+    io.github.resilience4j: DEBUG
+
 
 management:
-  tracing:
-    sampling:
-      probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
-  # Opcional para q el nombre del micro aparezca bien en Zipkin
   endpoints:
     web:
       exposure:
-        include: "health,info,tracing"
+        include: "health,info,circuitbreakers,tracing,prometheus" # promethes proximamente
+  endpoint:
+    health:
+      show-details: always
+    circuitbreakers:
+      enabled: true
+
+  # Configuración de Tracing (Micrometer + Zipkin)
+  tracing:
+    sampling:
+      probability: 1.0 # 1.0 significa que envía el 100% de las trazas 
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
+
+logging:
+  level:
+    io.github.resilience4j: DEBUG
+    # Importante para ver si las trazas se están enviando
+    org.springframework.web.client.RestTemplate: DEBUG
