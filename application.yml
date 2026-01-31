@@ -4,6 +4,9 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:7080/realms/order-system
+  config:
+    activate:
+      on-profile: docker
 
 eureka:
   client:
@@ -27,11 +30,6 @@ resilience4j:
     instances:
       productCB:
         baseConfig: default
-  
-logging:
-  level:
-    io.github.resilience4j: DEBUG
-
 
 management:
   endpoints:
