@@ -4,7 +4,7 @@ server:
 spring:
   config:
     activate:
-      on-profile: docker
+      on-profile: dev
   cloud:
     gateway:
       discovery:
@@ -38,7 +38,7 @@ spring:
             redirect-uri: ${KEYCLOAK_REDIRECT_URI:http://localhost:8080/login/oauth2/code/keycloak}
         provider:
           keycloak:
-            issuer-uri: http://localhost:7080/realms/order-system
+            issuer-uri: http://keycloak:8080/realms/order-system
 
 
   output:

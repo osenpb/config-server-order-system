@@ -3,16 +3,16 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:7080/realms/order-system
+          issuer-uri: http://keycloak:8080/realms/order-system
   config:
     activate:
-      on-profile: docker
+      on-profile: dev
 
 eureka:
   client:
-    enabled: true       
+    enabled: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
   instance:
     prefer-ip-address: true
 
