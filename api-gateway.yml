@@ -2,9 +2,11 @@ server:
   port: 8080
 
 spring:
+  config:
+    activate:
+      on-profile: dev
   cloud:
     gateway:
-      discovery:
       server:
         webflux:
           default-filters:
