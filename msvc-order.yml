@@ -6,7 +6,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mysql://${DB_HOST:mysql-business}:3306/order_system?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/order_system?useSSL=false&serverTimezone=UTC
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:mysql}
     driver-class-name: com.mysql.cj.jdbc.Driver
