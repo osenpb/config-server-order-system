@@ -1,7 +1,11 @@
 server:
   port: 0 
 
+# Deshabilitar JMX para evitar conflictos de puerto al ejecutar múltiples servicios
 spring:
+  jmx:
+    enabled: false
+
   security:
     oauth2:
       resourceserver:
