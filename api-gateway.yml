@@ -4,21 +4,23 @@ server:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - TokenRelay
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes: 
-        - id: msvc-product
-          uri: lb://msvc-product
-          predicates:
-            - Path=/api/products/**
-        - id: msvc-order
-          uri: lb://msvc-order
-          predicates:
-            - Path=/api/orders/**
+      server:
+        webflux:
+          default-filters:
+            - TokenRelay
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: msvc-product
+              uri: lb://msvc-product
+              predicates:
+                - Path=/api/products/**
+            - id: msvc-order
+              uri: lb://msvc-order
+              predicates:
+                - Path=/api/orders/**
   
   security:
     oauth2:
