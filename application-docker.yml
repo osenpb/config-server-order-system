@@ -1,0 +1,19 @@
+server:
+  port: 0
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/order-system
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+logging:
+  level:
+    io.github.resilience4j: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
