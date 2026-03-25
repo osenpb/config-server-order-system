@@ -6,6 +6,9 @@ spring:
   jmx:
     enabled: false
 
+  main:
+    lazy-initialization: true
+
   security:
     oauth2:
       resourceserver:
