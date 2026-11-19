@@ -20,3 +20,5 @@ logging:
   level:
     io.github.resilience4j: DEBUG
     org.springframework.web.client.RestTemplate: DEBUG
+
+spring.kafka.bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka:9092}

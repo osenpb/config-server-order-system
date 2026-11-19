@@ -35,6 +35,9 @@ resilience4j:
     instances:
       productCB:
         baseConfig: default
+        # un producto inexistente es un error de negocio, no un fallo del servicio
+        ignoreExceptions:
+          - com.osen.msvc_order.exceptions.ProductNotFoundException
 
 management:
   endpoints:
@@ -60,3 +63,5 @@ logging:
     io.github.resilience4j: DEBUG
     # Importante para ver si las trazas se están enviando
     org.springframework.web.client.RestTemplate: DEBUG
+
+spring.kafka.bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
