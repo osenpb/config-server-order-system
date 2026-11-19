@@ -11,3 +11,13 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+# Solo order usa este circuit breaker; la config base (default) vive en application.yml
+resilience4j:
+  circuitbreaker:
+    instances:
+      productCB:
+        baseConfig: default
+        # un producto inexistente es un error de negocio, no un fallo del servicio
+        ignoreExceptions:
+          - com.osen.msvc_order.exceptions.ProductNotFoundException

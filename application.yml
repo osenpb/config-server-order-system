@@ -32,12 +32,6 @@ resilience4j:
         minimumNumberOfCalls: 5
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
-    instances:
-      productCB:
-        baseConfig: default
-        # un producto inexistente es un error de negocio, no un fallo del servicio
-        ignoreExceptions:
-          - com.osen.msvc_order.exceptions.ProductNotFoundException
 
 management:
   endpoints:
